@@ -273,3 +273,375 @@ public class Main {
 ```
 
 在上面的代码中，p1和p2是两个不同的引用变量，但它们都指向同一个Person对象。当我们在p1上调用setName方法时，该方法更改了该对象的名称属性。因此，当我们在p2上调用getName方法时，它返回了更新后的名称。这说明了引用类型是按引用传递的。
+
+### 原生类型VS引用类型
+
+Java的数据类型可以分为两类：原生类型和引用类型。原生类型也称为基本类型，它们是Java语言的内置类型，可以用于定义变量和方法参数，并且具有一些特殊的语言支持。引用类型是指向对象的指针，可以用来访问和操作对象的属性和方法。
+
+* 下面是Java基本类型和引用类型之间的一些主要区别：
+* 存储方式：基本类型的值存储在栈内存中，而引用类型的值存储在堆内存中，栈中只存储引用。
+* 大小：基本类型的大小在不同的平台上是相同的，而引用类型的大小在不同的平台上可能会有所不同，因为它们指向的对象的大小是动态的。
+* 默认值：基本类型的变量在声明时会自动初始化为默认值，而引用类型的变量的默认值是null。
+* 传递方式：当传递基本类型的变量时，传递的是变量的值副本，而不是变量本身。当传递引用类型的变量时，传递的是指向对象的引用副本。
+* 包装器类：Java提供了一些包装器类，可以将基本类型包装成对象，以便在需要对象而不是基本类型的情况下使用。例如，Integer类用于表示int类型的值。这些包装器类提供了一些附加的方法和功能，例如将基本类型转换为字符串，以及将字符串转换为基本类型。
+
+总的来说，基本类型在Java中更高效、更简单，用于存储简单数据类型的值；而引用类型则更加灵活，可以用于存储复杂对象的值，同时需要更多的内存和处理器时间。程序员需要根据应用程序的需求和性能要求来选择使用哪种数据类型。
+
+### String
+
+Java中的String是一种引用类型，用于表示一个字符串对象。在Java中，字符串是不可变的，这意味着一旦字符串对象被创建，就无法更改其值。字符串的常用方法包括length()、charAt()、substring()等等。
+
+下面是一个例子，演示如何使用Java中的字符串：
+
+```java
+// 创建一个字符串
+String str = "Hello, World!";
+
+// 获取字符串的长度
+int len = str.length();
+System.out.println("Length: " + len);
+
+// 获取字符串的第一个字符
+char firstChar = str.charAt(0);
+System.out.println("First Character: " + firstChar);
+
+// 获取子字符串
+String subStr = str.substring(7);
+System.out.println("Sub String: " + subStr);
+```
+
+这个例子创建了一个字符串对象，并使用length()方法获取了字符串的长度。然后，使用charAt()方法获取了字符串的第一个字符，并使用substring()方法获取了字符串的子字符串。最后，将这些结果打印到控制台上。
+
+除了这些基本的操作之外，Java中的字符串还有许多其他的方法和操作，例如拼接字符串、替换字符串、转换大小写等等。字符串在Java中是一个非常常用和重要的数据类型，它们被广泛用于各种应用程序中。
+
+### 转义字符
+
+在Java中，转义字符是以反斜杠（\）开头的特殊字符序列。它们用于表示一些无法直接输入或打印的字符，例如换行符、制表符、引号等等。下面是一些常用的Java转义字符：
+
+* `\n`：换行符
+* `\t`：制表符
+* `\'`：单引号
+* `\"`：双引号
+* `\\`：反斜杠
+
+这些转义字符可以用在Java字符串中，例如：
+
+```java
+String str = "Hello\nWorld!";
+System.out.println(str);
+```
+
+这个例子创建了一个包含换行符的字符串，并使用println()方法将其打印到控制台上。输出结果如下：
+
+```bash
+Hello
+World!
+```
+
+除了字符串中的转义字符之外，Java还支持在字符字面值中使用转义字符。例如：
+
+```java
+char ch = '\n';
+System.out.println("A" + ch + "B");
+```
+
+这个例子创建了一个包含换行符的字符，并将其与字符串“A”和“B”拼接起来。输出结果如下：
+
+```bash
+A
+B
+```
+
+在Java中，转义字符非常有用，它们允许我们在字符串和字符中表示各种特殊字符和控制字符。了解和使用这些转义字符可以使我们更加灵活地处理字符串和字符数据。
+
+### Arrays
+
+在Java中，数组是一种容器，可以存储一组相同类型的数据。Java数组具有以下特点：
+
+* 数组长度固定，一旦创建，其长度不能再改变。
+* 数组可以包含任何类型的元素，包括基本类型和对象类型。
+* 数组中的元素可以通过索引访问，索引从0开始，最大索引为数组长度减1。
+* 数组可以作为参数传递给方法，也可以作为方法的返回值。
+
+Java数组的声明方式如下：
+
+```java
+// 声明一个包含5个int类型元素的数组
+int[] intArray = new int[5];
+
+// 声明一个包含3个String类型元素的数组
+String[] stringArray = new String[3];
+```
+
+Java数组的初始化方式有两种：
+
+* 静态初始化：在声明数组的同时为数组元素赋初值。
+
+```java
+// 声明并初始化一个包含3个int类型元素的数组
+int[] intArray = {1, 2, 3};
+
+// 声明并初始化一个包含2个String类型元素的数组
+String[] stringArray = {"Hello", "World"};
+```
+
+* 动态初始化：在声明数组时仅指定数组长度，然后在后续的代码中为数组元素赋值。
+
+```java
+// 声明一个包含5个int类型元素的数组，并逐个赋值
+int[] intArray = new int[5];
+intArray[0] = 1;
+intArray[1] = 2;
+intArray[2] = 3;
+intArray[3] = 4;
+intArray[4] = 5;
+
+// 声明一个包含3个String类型元素的数组，并逐个赋值
+String[] stringArray = new String[3];
+stringArray[0] = "Hello";
+stringArray[1] = "World";
+stringArray[2] = "!";
+```
+
+ava数组可以使用以下方法：
+
+* length：获取数组长度。
+* clone()：复制一个数组。
+* toString()：将数组转换为字符串形式。
+* Arrays.sort()：对数组进行排序。
+
+例如：
+
+```java
+int[] intArray = {3, 1, 4, 1, 5, 9, 2, 6, 5};
+System.out.println("数组长度为：" + intArray.length);
+System.out.println("原始数组为：" + Arrays.toString(intArray));
+
+int[] newArray = intArray.clone();
+Arrays.sort(newArray);
+System.out.println("排序后的数组为：" + Arrays.toString(newArray));
+```
+
+这个例子创建了一个包含9个整数的数组，并使用length方法获取数组长度。然后，使用clone()方法复制了原始数组，并使用Arrays.sort()方法对复制后的数组进行排序。最后，使用toString()方法将数组转换为字符串形式，并将其打印到控制台上。输出结果如下：
+
+```bash
+数组长度为：9
+原始数组为：[3, 1, 4, 1, 5, 9, 2, 6, 5]
+```
+
+下面我将继续详细介绍Java数组的相关内容。
+
+Java数组的常用方法包括以下几个：
+
+* length：用于获取数组的长度，返回一个int类型的值，表示数组中元素的个数。
+* clone：用于复制一个数组，返回一个新的数组，与原数组具有相同的元素值，但是它们是不同的对象。
+* toString：用于将数组转换成一个字符串，返回一个String类型的值。
+* sort：用于对数组进行排序，可以对数字和字符串类型的数组进行排序。
+* binarySearch：用于在已经排序的数组中查找指定的元素，返回该元素在数组中的位置。
+
+下面是一个使用Java数组方法的示例：
+
+```java
+public class ArrayDemo {
+    public static void main(String[] args) {
+        // 创建一个长度为5的int类型数组
+        int[] numbers = { 10, 20, 15, 22, 35 };
+
+        // 使用length方法获取数组长度并打印
+        System.out.println("数组长度为：" + numbers.length);
+
+        // 使用clone方法复制数组
+        int[] numbersCopy = numbers.clone();
+        System.out.println("原始数组为：" + Arrays.toString(numbers));
+        System.out.println("复制的数组为：" + Arrays.toString(numbersCopy));
+
+        // 使用toString方法将数组转换成字符串
+        String numbersString = Arrays.toString(numbers);
+        System.out.println("数组转换成的字符串为：" + numbersString);
+
+        // 使用sort方法对数组进行排序
+        Arrays.sort(numbers);
+        System.out.println("排序后的数组为：" + Arrays.toString(numbers));
+
+        // 使用binarySearch方法查找数组中的元素
+        int index = Arrays.binarySearch(numbers, 22);
+        System.out.println("元素22在数组中的位置为：" + index);
+    }
+}
+```
+
+输出结果为：
+
+```bash
+数组长度为：5
+原始数组为：[10, 20, 15, 22, 35]
+复制的数组为：[10, 20, 15, 22, 35]
+数组转换成的字符串为：[10, 20, 15, 22, 35]
+排序后的数组为：[10, 15, 20, 22, 35]
+元素22在数组中的位置为：3
+```
+
+通过上述示例可以看到，Java数组提供了一系列便捷的方法，可以方便地进行操作。
+
+### 多维数组
+
+Java的多维数组是指数组中每个元素也是一个数组的数组。多维数组的定义方式与一维数组类似，只需要在类型后面加上方括号来表示数组的维度。以下是一个二维数组的例子：
+
+```java
+int[][] matrix = new int[3][4];
+```
+
+上述代码定义了一个3行4列的二维数组。我们也可以使用初始化列表来初始化多维数组，例如：
+
+```java
+int[][] matrix = {{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
+```
+
+上述代码初始化了一个3行3列的二维数组，并赋予了相应的值。我们可以通过以下方式来访问多维数组中的元素：
+
+```java
+int x = matrix[1][2]; // 获取第2行第3列的元素
+```
+
+Java中的多维数组实际上是一个数组的数组，因此它可以拥有任意多个维度。以下是一个三维数组的例子：
+
+```java
+int[][][] cube = new int[3][4][5];
+```
+
+上述代码定义了一个3维数组，其中第1维有3个元素，每个元素是一个二维数组，第2维有4个元素，每个元素是一个一维数组，第3维有5个元素，每个元素是一个整数。我们可以使用类似于二维数组的方式来访问三维数组中的元素：
+
+```java
+int x = cube[1][2][3]; // 获取第2个二维数组中的第3个一维数组中的第4个元素
+```
+
+在使用多维数组时，需要注意数组的大小与元素访问的边界，避免出现数组越界的情况。同时，多维数组的使用场景相对较少，通常可以使用其他的数据结构来代替多维数组。
+
+### 常量
+
+Java中的常量是指一旦被定义后，其值不能被更改的变量。常量可以用来表示程序中不变的值，如π的值3.14159等。Java中常量的定义方式与变量不同，常量通常使用关键字final定义。
+
+下面是定义一个常量的语法格式：
+
+```java
+final dataType CONSTANT_NAME = value;
+```
+
+其中，dataType指定了常量的数据类型，CONSTANT_NAME为常量的名字，value为常量的值。
+
+以下是定义几个常量的示例：
+
+```java
+final int MAX_NUM = 100;
+final double PI = 3.14159;
+final String GREETING = "Hello";
+```
+
+使用常量的好处是可以提高代码的可读性和可维护性，因为常量值在代码中只需定义一次，如果需要修改常量值，则只需在定义常量的地方进行修改即可，而不需要修改代码中所有使用该常量的地方。
+
+常量还可以被用在switch语句中：
+
+```java
+final int MONDAY = 1;
+final int TUESDAY = 2;
+final int WEDNESDAY = 3;
+final int THURSDAY = 4;
+final int FRIDAY = 5;
+final int SATURDAY = 6;
+final int SUNDAY = 7;
+
+int dayOfWeek = 4;
+switch (dayOfWeek) {
+    case MONDAY:
+        System.out.println("Today is Monday");
+        break;
+    case TUESDAY:
+        System.out.println("Today is Tuesday");
+        break;
+    case WEDNESDAY:
+        System.out.println("Today is Wednesday");
+        break;
+    case THURSDAY:
+        System.out.println("Today is Thursday");
+        break;
+    case FRIDAY:
+        System.out.println("Today is Friday");
+        break;
+    case SATURDAY:
+        System.out.println("Today is Saturday");
+        break;
+    case SUNDAY:
+        System.out.println("Today is Sunday");
+        break;
+    default:
+        System.out.println("Invalid day of week");
+}
+```
+
+在上面的示例中，定义了一组常量来表示每个星期几的值，然后在switch语句中使用这些常量来比较变量dayOfWeek的值。
+
+### 算术表达式
+
+Java的算术表达式是指使用算术运算符对值进行计算的表达式。Java提供了丰富的算术运算符，包括加法（+），减法（-），乘法（*），除法（/），取余（%）等。
+
+以下是关于Java算术表达式的一些重要事项：
+
+* 算术表达式的优先级：Java遵循数学上的运算符优先级。优先级高的运算符先进行计算。如果有相同优先级的运算符，则从左到右进行计算。
+* 整数相除：在Java中，如果两个整数进行除法运算，则结果为整数，即向下取整。例如，7 / 2 的结果为3。
+* 取余运算：取余运算（%）返回被除数除以除数后的余数。例如，7 % 2 的结果为1。
+
+以下是一些算术表达式的例子：
+
+```java
+int a = 10;
+int b = 5;
+
+// 加法
+int c = a + b; // c的值为15
+
+// 减法
+int d = a - b; // d的值为5
+
+// 乘法
+int e = a * b; // e的值为50
+
+// 除法
+int f = a / b; // f的值为2
+
+// 取余
+int g = a % b; // g的值为0
+```
+
+注意，在上述示例中，a和b是整数类型。如果它们是浮点数类型，则结果也将是浮点数类型。
+
+### 运算符优先级
+
+Java中的操作符（或运算符）根据优先级进行计算。优先级高的操作符将先被计算，而优先级相同的操作符将从左至右进行计算。如果需要改变计算次序，则可以使用括号来改变优先级。
+
+以下是Java中常见的操作符及其优先级（从高到低）：
+
+* 后缀运算符（如 ++ 和 --）
+* 一元运算符（如 +、-、!、~）
+* 乘法和除法运算符（如 *、/、%）
+* 加法和减法运算符（如 +、-）
+* 移位运算符（如 <<、>>、>>>）
+* 按位与运算符（如 &）
+* 按位异或运算符（如 ^）
+* 按位或运算符（如 |）
+* 逻辑与运算符（如 &&）
+* 逻辑或运算符（如 ||）
+* 条件运算符（如 ? :）
+* 赋值运算符（如 =、+=、-=、*=、/=、%=）
+
+下面是一个例子，演示操作符的优先级：
+
+```java
+int a = 10, b = 5, c = 2;
+int result = a + b * c; // 优先计算乘法运算符，然后再计算加法运算符
+System.out.println(result); // 输出20
+
+result = (a + b) * c; // 使用括号改变计算次序
+System.out.println(result); // 输出30
+```
+
+在上面的例子中，当计算 a + b *c 时，由于乘法运算符的优先级高于加法运算符，所以 b* c 先被计算，其结果为10，然后再加上a的值10，结果为20。而当使用括号来改变计算次序时， (a + b) 先被计算，其结果为15，然后再乘以c的值2，结果为30。

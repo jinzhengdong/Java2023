@@ -645,3 +645,400 @@ System.out.println(result); // 输出30
 ```
 
 在上面的例子中，当计算 a + b *c 时，由于乘法运算符的优先级高于加法运算符，所以 b* c 先被计算，其结果为10，然后再加上a的值10，结果为20。而当使用括号来改变计算次序时， (a + b) 先被计算，其结果为15，然后再乘以c的值2，结果为30。
+
+### 强制类型转换
+
+Java 强制类型转换（casting）指的是将一个数据类型的值转换为另一个数据类型的过程。Java 中的类型转换分为两种：隐式转换和显式转换。
+
+隐式转换，也称为扩大转换（widening），是在将一个较小数据类型的值分配给较大数据类型的变量时自动发生的。例如，如果我们将一个 int 类型的值分配给一个 long 类型的变量，转换将自动发生，因为 long 可以容纳比 int 更大范围的值。
+
+```java
+int x = 10;
+long y = x; // 隐式转换
+```
+
+显式转换，也称为缩小转换（narrowing），需要程序员显式地指定从较大数据类型到较小数据类型的转换。例如，如果我们将一个 double 类型的值分配给一个 int 类型的变量，就需要进行显式转换。
+
+```java
+double x = 10.5;
+int y = (int) x; // 显式转换
+```
+
+需要注意的是，显式转换可能会导致数据或精度的损失，因此应谨慎使用。例如，在上面的例子中，当 x 被转换为 int 类型时，其小数部分将被截断，所以 y 的值将是 10 而不是 10.5。
+
+总之，在 Java 中进行强制类型转换允许我们将一个数据类型转换为另一个数据类型。当将一个较小数据类型的值分配给一个较大数据类型的变量时会自动发生隐式转换，而显式转换需要程序员显式指定从较大数据类型到较小数据类型的转换。
+
+### 数学类
+
+Java Math 类是 Java 中的一个标准库类，它包含了各种用于数学计算的静态方法，可以用于执行许多基本数学运算，例如指数、对数、三角函数、舍入、随机数等。使用 Math 类可以避免手动实现这些数学运算，从而提高代码的可读性和可维护性。
+
+下面介绍一些 Java Math 类中的常用方法。
+
+* abs(x)：返回 x 的绝对值。
+
+```java
+int x = Math.abs(-10); // x 的值为 10
+```
+
+* sqrt(x)：返回 x 的平方根。
+
+```java
+double y = Math.sqrt(16); // y 的值为 4.0
+```
+
+* pow(x, y)：返回 x 的 y 次方。
+
+```java
+double z = Math.pow(2, 3); // z 的值为 8.0
+```
+
+* sin(x)、cos(x)、tan(x)：返回 x 的正弦、余弦和正切值（单位为弧度）。
+
+```java
+double a = Math.sin(Math.PI / 2); // a 的值为 1.0
+```
+
+* exp(x)：返回自然数 e 的 x 次方。
+
+```java
+double b = Math.exp(1); // b 的值为 e 的值，即 2.718281828459045
+```
+
+* log(x)、log10(x)：返回 x 的自然对数和以 10 为底的对数。
+
+```java
+double c = Math.log(Math.E); // c 的值为 1.0
+```
+
+* ceil(x)、floor(x)：返回不小于 x 的最小整数和不大于 x 的最大整数。
+
+```java
+double d = Math.ceil(2.1); // d 的值为 3.0
+double e = Math.floor(2.9); // e 的值为 2.0
+```
+
+* round(x)：返回最接近 x 的整数，四舍五入。
+
+```java
+int f = Math.round(2.5); // f 的值为 3
+```
+
+* random()：返回一个带正号的 double 值，大于等于 0.0 且小于 1.0。
+
+```java
+double g = Math.random(); // g 的值为大于等于 0.0 且小于 1.0 的随机 double 值
+```
+
+需要注意的是，Math 类中的方法都是静态方法，所以不需要创建 Math 类的实例即可使用。此外，由于 Math 类中的方法都是静态方法，所以我们可以直接使用类名调用这些方法，例如 Math.abs(-10)。
+
+总之，Java Math 类是一个非常有用的类，它提供了许多数学计算方面的工具方法，可以方便地执行各种数学运算。了解并熟练使用 Math 类中的常用方法可以极大地提高代码的编写效率
+
+### 格式化数字
+
+Java 提供了多种格式化数字的方式，下面介绍几种常用的方式。
+
+* DecimalFormat 类：DecimalFormat 类提供了非常灵活的数字格式化方式。通过实例化 DecimalFormat 类，可以根据需求设置数字格式，例如小数位数、千位分隔符等。示例代码如下：
+
+```java
+double num = 1234567.89;
+DecimalFormat df = new DecimalFormat("#,###.00");
+String formattedNum = df.format(num);
+System.out.println(formattedNum); // 输出为 1,234,567.89
+```
+
+在上述代码中，我们首先定义了一个 double 类型的数字 num，然后实例化了一个 DecimalFormat 对象 df，并将格式字符串 #,###.00 传递给它的构造函数。最后，我们通过调用 format() 方法将 num 进行格式化，并将格式化后的字符串赋值给变量 formattedNum。在这个示例中，格式化后的字符串为 1,234,567.89。
+
+* String.format() 方法：String.format() 方法可以用于格式化各种类型的数据，包括数字。我们可以在格式化字符串中使用占位符 %d、%f 等来表示要格式化的数字的类型和格式。示例代码如下：
+
+```java
+int num1 = 123;
+double num2 = 123.45;
+String formattedNum1 = String.format("%,d", num1);
+String formattedNum2 = String.format("%.2f", num2);
+System.out.println(formattedNum1); // 输出为 123
+System.out.println(formattedNum2); // 输出为 123.45
+```
+
+在上述代码中，我们使用了 %d 和 %f 占位符分别表示要格式化的数字为整数和浮点数。我们还可以在占位符前添加其他格式选项，例如使用 , 表示千位分隔符，使用 . 表示小数点等。
+
+* NumberFormat 类：NumberFormat 类是一个抽象类，它提供了格式化数字的基本方法。我们可以通过调用其静态方法 getNumberInstance() 获取一个默认的 NumberFormat 对象，或者通过实例化 DecimalFormat、PercentFormat 等子类来创建自定义的格式化器。示例代码如下：
+
+```java
+double num = 0.1234;
+NumberFormat nf = NumberFormat.getPercentInstance();
+nf.setMaximumFractionDigits(2);
+String formattedNum = nf.format(num);
+System.out.println(formattedNum); // 输出为 12.34%
+```
+
+在上述代码中，我们首先定义了一个 double 类型的数字 num，然后调用 NumberFormat.getPercentInstance() 方法获取一个默认的百分比格式化器。我们还通过调用 setMaximumFractionDigits() 方法设置百分比格式化器的最大小数位数为 2。最后，我们通过调用 format() 方法将 num 进行格式化，并将格式化后的字符串赋值给变量 formattedNum。在这个示例在这个示例中，格式化后的字符串为 12.34%。
+
+除了上述介绍的三种方式外，Java 还提供了其他一些格式化数字的类和方法，例如 DecimalFormatSymbols 类用于设置数字格式中的符号、NumberFormat.getCurrencyInstance() 方法用于格式化货币等。选择合适的格式化方式取决于具体的需求和场景。
+
+### 读取输入
+
+在Java中，有几种常用的方法可以读取用户输入或从外部来源（如文件）中读取输入。以下是其中几种方法：
+
+* Scanner类：该类提供了从用户或文件中读取各种类型的输入，包括整数、浮点数、字符串和字符的方法。以下是一个示例：
+
+```java
+import java.util.Scanner;
+
+public class Example {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("请输入您的姓名：");
+        String name = scanner.nextLine();
+        System.out.println("您好，" + name + "！");
+    }
+}
+```
+
+在这个示例中，我们创建了一个Scanner对象，使用System.in从控制台读取输入。nextLine()方法用于读取用户输入的字符字符串。
+
+* BufferedReader类：该类提供了一种更高效的方式从文件或控制台读取输入。它使用缓冲区批量读取字符，比逐个读取字符更快。以下是一个示例：
+
+```java
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
+public class Example {
+    public static void main(String[] args) throws IOException {
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        System.out.print("请输入您的姓名：");
+        String name = reader.readLine();
+        System.out.println("您好，" + name + "！");
+    }
+}
+```
+
+在这个示例中，我们创建了一个BufferedReader对象，使用System.in从控制台读取输入。readLine()方法用于读取用户输入的文本行。
+
+* Console类：该类提供了从控制台读取输入的方法。它仅在Java 6或更高版本中可用。以下是一个示例：
+
+```java
+import java.io.Console;
+
+public class Example {
+    public static void main(String[] args) {
+        Console console = System.console();
+        if (console == null) {
+            System.err.println("没有控制台。");
+            System.exit(1);
+        }
+        String name = console.readLine("请输入您的姓名：");
+        console.printf("您好，%s！", name);
+    }
+}
+```
+
+在这个示例中，我们使用System.console()获取控制台的引用。如果控制台不可用，则打印错误消息并退出程序。readLine()方法用于读取用户输入的文本行，而printf()用于将消息显示到控制台上。
+
+### 贷款偿还计算器
+
+输入贷款总金额、年利率以及贷款期限，计算每月还款金额及支付的利息。
+
+```java
+import java.util.Scanner;
+
+public class LoanCalculator {
+    public static void main(String[] args) {
+        // 获取贷款金额、年利率和贷款期限
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("请输入贷款金额（元）：");
+        double loanAmount = scanner.nextDouble();
+        System.out.print("请输入年利率（%）：");
+        double annualInterestRate = scanner.nextDouble() / 100.0;
+        System.out.print("请输入贷款期限（年）：");
+        int loanTermInYears = scanner.nextInt();
+
+        // 计算每月还款金额和总支付利息
+        int numberOfPayments = loanTermInYears * 12;
+        double monthlyInterestRate = annualInterestRate / 12.0;
+        double monthlyPayment = (loanAmount * monthlyInterestRate) / (1 - Math.pow(1 + monthlyInterestRate, -numberOfPayments));
+        double totalPayment = monthlyPayment * numberOfPayments;
+        double totalInterest = totalPayment - loanAmount;
+
+        // 输出结果
+        System.out.printf("每月还款金额为：%.2f元\n", monthlyPayment);
+        System.out.printf("总支付利息为：%.2f元\n", totalInterest);
+    }
+}
+```
+
+该程序通过使用Scanner类从控制台读取用户输入的贷款金额、年利率和贷款期限。然后使用标准公式计算每月还款金额和总支付利息，最后将结果输出到控制台。请注意，该程序假设每月偿还贷款的金额是固定的，因此它并不考虑贷款本金在还款期内的变化。实际情况中，可能存在一些变化，例如固定利率或变动利率的贷款。
+
+## 流程控制
+
+### 简介
+
+Java的流程控制语句允许程序在执行时按照特定的条件执行代码块，控制程序的执行流程。以下是Java中的三种主要流程控制语句：
+
+* if语句：if语句用于根据给定的条件来决定是否执行一段代码块。如果条件为真，那么执行代码块；否则，跳过该代码块。以下是一个if语句的示例：
+
+```java
+int x = 10;
+if (x > 5) {
+    System.out.println("x大于5");
+}
+```
+
+在这个示例中，如果x的值大于5，那么就会打印出"x大于5"。
+
+* for循环：for循环用于多次执行一段代码块，通常用于迭代数组或集合中的元素。以下是一个for循环的示例：
+
+```java
+for (int i = 0; i < 10; i++) {
+    System.out.println(i);
+}
+```
+
+在这个示例中，for循环将从0开始计数，一直循环到9。在每次循环中，都会打印出当前计数器的值。
+
+* while循环：while循环用于在给定的条件为真的情况下重复执行一段代码块。以下是一个while循环的示例：
+
+```java
+int i = 0;
+while (i < 10) {
+    System.out.println(i);
+    i++;
+}
+```
+
+在这个示例中，while循环将一直循环，直到计数器i达到10。在每次循环中，都会打印出当前计数器的值，并将计数器增加1。
+
+### 比较操作符
+
+Java中的比较操作符用于比较两个值并返回一个布尔值（true或false）。Java中有以下比较操作符：
+
+1. `==`：相等操作符，用于检查两个值是否相等。如果两个值相等，则返回true，否则返回false。请注意，这是比较值的操作符，不是比较对象的操作符。如果比较对象，请使用`.equals()`方法。
+
+```java
+int a = 10;
+int b = 10;
+if (a == b) {
+    System.out.println("a和b相等");
+}
+
+// 输出：a和b相等
+```
+
+```java
+String str1 = "hello";
+String str2 = "hello";
+if (str1 == str2) {
+    System.out.println("str1和str2引用同一个对象");
+}
+
+// 输出：str1和str2引用同一个对象
+```
+
+```java
+String str3 = new String("hello");
+String str4 = new String("hello");
+if (str3 == str4) {
+    System.out.println("str3和str4引用同一个对象");
+} else {
+    System.out.println("str3和str4引用不同的对象");
+}
+
+// 输出：str3和str4引用不同的对象
+```
+
+2. `!=`：不等操作符，用于检查两个值是否不相等。如果两个值不相等，则返回true，否则返回false。
+
+```java
+int c = 10;
+int d = 20;
+if (c != d) {
+    System.out.println("c和d不相等");
+}
+
+// 输出：c和d不相等
+```
+
+3. `<`：小于操作符，用于检查一个值是否小于另一个值。如果第一个值小于第二个值，则返回true，否则返回false。
+
+```java
+int e = 10;
+int f = 20;
+if (e < f) {
+    System.out.println("e小于f");
+}
+
+// 输出：e小于f
+```
+
+```java
+String str5 = "abc";
+String str6 = "def";
+if (str5.compareTo(str6) < 0) {
+    System.out.println("str5小于str6");
+}
+
+// 输出：str5小于str6
+```
+
+4. `>`：大于操作符，用于检查一个值是否大于另一个值。如果第一个值大于第二个值，则返回true，否则返回false。
+
+```java
+int g = 10;
+int h = 20;
+if (h > g) {
+    System.out.println("h大于g");
+}
+
+// 输出：h大于g
+```
+
+```java
+String str7 = "def";
+String str8 = "abc";
+if (str7.compareTo(str8) > 0) {
+    System.out.println("str7大于str8");
+}
+
+输出：str7大于str8
+```
+
+5. `<=`：小于等于操作符，用于检查一个值是否小于或等于另一个值。如果第一个值小于或等于第二个值，则返回true，否则返回false。
+
+```java
+int i = 10;
+int j = 10;
+if (i <= j) {
+    System.out.println("i小于等于j");
+}
+
+输出：i小于等于j
+```
+
+6. `>=`：大于等于操作符，用于检查一个值是否大于或等于另一个值。如果第一个值大于或等于第二个值，则返回true，否则返回false。
+
+```java
+int k = 20;
+int l = 10;
+if (k >= l) {
+    System.out.println("k大于等于l");
+}
+
+输出：k大于等于l
+```
+
+请注意，在比较操作符中，字符串比较是基于字符串的字典顺序进行的。这意味着对于字符串的比较，将对字符串的每个字符进行比较，直到找到不同的字符为止。例如，字符串"abc"将被视为小于字符串"def"。
+
+此外，Java还支持使用`instanceof`操作符来比较对象类型。该操作符用于检查一个对象是否属于某个类或其子类的实例。如果对象是该类或其子类的实例，则返回true，否则返回false。例如，`object instanceof String`将检查对象是否是String类或其子类的实例。
+
+```java
+Object obj2 = new Object();
+if (obj2 instanceof String) {
+    System.out.println("obj2是String类的实例");
+} else {
+    System.out.println("obj2不是String类的实例");
+}
+
+输出：obj2不是String类的实例
+```
+
+### 逻辑操作符

@@ -1042,3 +1042,49 @@ if (obj2 instanceof String) {
 ```
 
 ### 逻辑操作符
+
+Java 的逻辑操作符用于对布尔类型的值进行逻辑运算，其结果也是布尔类型的值。Java 的逻辑操作符包括以下几种：
+
+* 逻辑与操作符 (&&)：表示两个表达式的结果都为 true 时，整个逻辑表达式的结果才为 true。
+
+```java
+boolean a = true;
+boolean b = false;
+boolean c = a && b; // false
+```
+
+* 逻辑或操作符 (||)：表示两个表达式中至少有一个结果为 true 时，整个逻辑表达式的结果就为 true。
+
+```java
+boolean a = true;
+boolean b = false;
+boolean c = a || b; // true
+```
+
+* 逻辑非操作符 (!)：表示对一个表达式的结果取反，即将 true 变为 false，将 false 变为 true。
+
+```java
+boolean a = true;
+boolean b = !a; // false
+```
+
+这些逻辑操作符常常用于条件语句和循环语句中，以进行条件判断和控制程序流程。下面是一个示例：
+
+```java
+int x = 5;
+int y = 10;
+
+if (x > 0 && y > 0) {
+    System.out.println("x 和 y 都大于 0");
+}
+
+if (x == 0 || y == 0) {
+    System.out.println("x 或 y 中至少有一个为 0");
+}
+
+if (!(x > y)) {
+    System.out.println("x 不大于 y");
+}
+```
+
+在这个示例中，使用了逻辑与、逻辑或和逻辑非操作符，根据不同的条件输出不同的结果。

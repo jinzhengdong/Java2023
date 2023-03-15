@@ -127,3 +127,50 @@ public class UserController {
   });
 </script>
 ```
+
+6. json decode
+
+```js
+// assume the server returns a JSON string like this:
+var jsonString = '{"name": "John", "age": 30, "city": "New York"}';
+
+// decode the JSON data using JSON.parse()
+var data = JSON.parse(jsonString);
+
+// access the properties of the JavaScript object
+console.log(data.name);  // outputs "John"
+console.log(data.age);   // outputs 30
+console.log(data.city);  // outputs "New York"
+```
+
+```js
+try {
+  var data = JSON.parse(jsonString);
+} catch (e) {
+  console.error("Invalid JSON data: " + e.message);
+}
+```
+
+```js
+// assume the server returns a JSON string with Chinese characters like this:
+var jsonString = '{"name": "%E5%BC%A0%E4%B8%89", "age": 30, "city": "%E5%8C%97%E4%BA%AC"}';
+
+// decode the JSON string using decodeURIComponent()
+var decodedString = decodeURIComponent(jsonString);
+
+// parse the decoded JSON string into a JavaScript object using JSON.parse()
+var data = JSON.parse(decodedString);
+
+// access the properties of the JavaScript object
+console.log(data.name);  // outputs "张三"
+console.log(data.age);   // outputs 30
+console.log(data.city);  // outputs "北京"
+```
+
+```js
+try {
+  var decodedString = decodeURIComponent(jsonString);
+} catch (e) {
+  console.error("Invalid URL-encoded data: " + e.message);
+}
+```
